@@ -33,7 +33,7 @@ function checkPrices(){
   })
 }
 
-new CronJob('*/5 * * * * *', function() {
+new CronJob('* */5 * * * *', function() {
   console.log('checking ', new Date);
   checkPrices();
 }, null, true, 'Asia/Kolkata');
