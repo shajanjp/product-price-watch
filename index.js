@@ -1,7 +1,15 @@
+const crypto = require('crypto');
 const got = require('got');
 const CronJob = require('cron').CronJob;
 
-let watchData = require('./data.js');
+let watchData = require('./data.json');
+let watechedPrices = {};
+
+function md5(text){
+  let shasum = crypto.createHash('sha1');
+  shasum.update(text);
+  return shasum.digest('hex');
+}
 
 function parsePrice(body){
   let parsed = body.match(new RegExp('Price:</b>&nbsp;Rs. ' + "(.*)" + '&nbsp;'))[0];
