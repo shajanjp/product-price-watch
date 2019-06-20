@@ -21,7 +21,7 @@ function parseTitle(body){
   return parsed.replace('<b id="product-title">', '').replace('</b>', '').trim();
 }
 
-function checkPrices(){ 
+function checkPrices(){
   watchData.forEach(product => {
     got(product.url, {
       headers: {
@@ -30,9 +30,12 @@ function checkPrices(){
     })
     .then(data => {
       let productPrice = parsePrice(data.body);
-      if(productPrice < product.price.lessThan){
+      if(productPrice < product.price.lessThan && watechedPrices[md5(product.title)] !== productPrice){
         // Get cash ready
-        console.log(`Trigger for ${product.title} is now ${productPrice}`);
+        let notificationTitle = `${product.title} Price Drop`
+        let notificationDescription = `Its up for sale for Rs ${productPrice}/-`
+        got(`https://maker.ifttt.com/trigger/PC/with/key/KEY_HERE?value1=${notificationTitle}&value2=${notificationDescription}`)
+        console.log(`Trigger for ${product.title}`);
       }
     })
     .catch(error => {
@@ -41,7 +44,11 @@ function checkPrices(){
   })
 }
 
-new CronJob('* */5 * * * *', function() {
+watchData.forEach((product) => {
+  watechedPrices[md5(product.title)] = 0;
+});
+
+new CronJob('*/10 * * * * *', function() {
   console.log('checking ', new Date);
   checkPrices();
 }, null, true, 'Asia/Kolkata');
