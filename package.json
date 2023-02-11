@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "cron": "^1.6.0",
-    "got": "^9.6.0"
+    "got": "^12.5.3"
   }
 }
