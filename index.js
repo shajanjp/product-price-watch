@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const axios = require('axios');
 const CronJob = require('cron').CronJob;
 
-let watchData = require('./data.json');
+let watchList = require('./data.json');
 let watechedPrices = {};
 
 function md5(text){
@@ -12,7 +12,7 @@ function md5(text){
 }
 
 async function checkPrices(){
-  for(const product of watchData) {
+  for(const product of watchList) {
     const currentPrice = await getCurrentPrice(product.url);
     console.log(`Current price for ${product.title}: ${currentPrice}`);
 
@@ -26,9 +26,12 @@ async function checkPrices(){
   }
 }
 
-watchData.forEach((product) => {
-  watechedPrices[md5(product.title)] = 0;
-});
+
+for(const product of watchList){
+  watechedPrices[md5(product.title)] = Infinity;
+}
+
+checkPrices();
 
 new CronJob('*/60 * * * * *', function() {
   console.log('checking ', new Date);
