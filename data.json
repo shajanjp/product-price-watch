@@ -1,9 +1,16 @@
 [
   {
-    "title": "Amazon Echo Dot",
-    "url": "https://www.amazon.in/All-new-Echo-Dot-3rd-Gen/dp/B0792KTHKK/ref=sr_1_1?ie=UTF8&qid=1551784393&sr=8-1&keywords=google+home+mini",
+    "title": "Fire bolt watch",
+    "url": "https://pricehistoryapp.com/_next/data/jazupZ56Ldkz0y_NT_sbc/en-IN/product/fire-boltt-phoenix-pro-1-39-bluetooth-calling-smartwatch-ai-voice-assistant-metal-body-with-120-sports-modes-spo2-heart-rate-monitoring.json?slug=fire-boltt-phoenix-pro-1-39-bluetooth-calling-smartwatch-ai-voice-assistant-metal-body-with-120-sports-modes-spo2-heart-rate-monitoring",
     "price": {
-      "lessThan": 4000
+      "lessThan": 1100
+    }
+  },
+  {
+    "title": "Loom solar 10w",
+    "url": "https://pricehistoryapp.com/_next/data/jazupZ56Ldkz0y_NT_sbc/en-IN/product/loom-solar-panel-10-watt.json?slug=loom-solar-panel-10-watt",
+    "price": {
+      "lessThan": 650
     }
   }
 ]
